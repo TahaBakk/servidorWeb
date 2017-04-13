@@ -15,13 +15,8 @@ public class EchoGetHandler implements HttpHandler {
     @Override
     //montamos controlador echoGet para procesar el Get Request:
     public void handle(HttpExchange he) throws IOException {
-        // parse request
         Map<String, Object> parameters = new HashMap<String, Object>();
-        URI requestedUri = he.getRequestURI();
-        String query = requestedUri.getRawQuery();
-        Main.parseQuery(query, parameters);
-
-        // send response
+        // enviar datos a la web
         String response = Main.leerFitxero("echoGet.html");
         for (String key : parameters.keySet())
             response += key + " = " + parameters.get(key) + "\n";
