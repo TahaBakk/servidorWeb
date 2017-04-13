@@ -11,11 +11,21 @@ import java.util.List;
 import java.util.Map;
 
 public class Main {
-
+    /**
+     *@server.createContext es para que dependiendo de la url que
+     * le pongamos nos llamara una o otra
+     * si en la url(navegador)le ponemos:
+     * @localhost:9090 nos mostrara la pantalla principal
+     * @localhost:9090/echoGet nos saldra como que si hicieramos un get
+     * @localhost:9090/echoPost nos saldra como que si hicieramos un post
+     * si montaramos un formulario lo que hariamos seria que al darle al boton
+     * de enviar hacer un post y cojer los datos enviados
+     *  */
     public static void main(String[] args) throws IOException {
         System.out.println("Hola");
         int port = 9090;
         HttpServer server = HttpServer.create(new InetSocketAddress(port), 0);
+        //Para atender las diferentes url que se le envie
         System.out.println("server started at " + port);
         server.createContext("/", new RootHandler());
         server.createContext("/echoHeader", new EchoHeaderHandler());

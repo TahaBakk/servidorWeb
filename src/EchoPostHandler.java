@@ -24,7 +24,7 @@ public class EchoPostHandler implements HttpHandler {
         Main.parseQuery(query, parameters);
 
         // send response
-        String response = "";
+        String response = Main.leerFitxero("echoPost.html");
         for (String key : parameters.keySet())
             response += key + " = " + parameters.get(key) + "\n";
         he.sendResponseHeaders(200, response.length());
